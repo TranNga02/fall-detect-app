@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.fall_detect.databinding.FragmentNotificationBinding;
 import com.example.fall_detect.model.Video;
 import com.example.fall_detect.viewmodel.VideoAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +49,7 @@ public class NotificationFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String userId = "t9ju47auRbbQdufepGFsSRqOp2D2";
+        String userId = FirebaseAuth.getInstance().getUid();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference subCollectionRef = rootRef.child("users").child(userId).child("videos");

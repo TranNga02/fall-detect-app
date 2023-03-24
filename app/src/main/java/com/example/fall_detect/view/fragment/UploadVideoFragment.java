@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
 import com.example.fall_detect.databinding.FragmentUploadVideoBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -150,7 +151,7 @@ public class UploadVideoFragment extends Fragment {
     }
 
     private void UpLoadVideoInfoToRealTimeDB(Date date, String videoUrl) {
-        String userId = "t9ju47auRbbQdufepGFsSRqOp2D2";
+        String userId = FirebaseAuth.getInstance().getUid();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference parentRef = database.getReference("users");

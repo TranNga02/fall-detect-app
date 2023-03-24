@@ -3,35 +3,22 @@ package com.example.fall_detect.view.fragment;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
-import android.text.TextUtils;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.widget.MediaController;
-import android.widget.Toast;
-
-import com.example.fall_detect.R;
-import com.example.fall_detect.databinding.FragmentSignInBinding;
 import com.example.fall_detect.databinding.FragmentUploadVideoBinding;
-import com.example.fall_detect.model.Video;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -117,8 +104,17 @@ public class UploadVideoFragment extends Fragment {
             Date date = new Date();
 
             // Create a storage reference to the video file
-            String fileName = "Video.mp4"; // Set your desired file name here
-            StorageReference videoRef = storage.getReference().child(fileName);
+            String videoTitle = "";
+            Cursor cursor = getActivity().getContentResolver().query(videoUri, null, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int titleIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                if (titleIndex >= 0) {
+                    videoTitle = cursor.getString(titleIndex);
+                }
+                cursor.close();
+            }
+
+            StorageReference videoRef = storage.getReference().child(videoTitle);
 
             // Create a new UploadTask to upload the video file
             UploadTask uploadTask = videoRef.putFile(videoUri);

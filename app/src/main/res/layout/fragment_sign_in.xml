@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.SignInFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/log_in" />
+
+        <TextView
+            android:layout_marginVertical="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:hint="Email"
+            android:maxLines="1"
+            android:textColor="@color/blue_700"/>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20sp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/blue_700"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_incorrect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/red_700"
+            />
+
+        <Button
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_700"
+            android:padding="15sp"
+            android:text="Sign In"
+            android:layout_marginVertical="20sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+</FrameLayout>

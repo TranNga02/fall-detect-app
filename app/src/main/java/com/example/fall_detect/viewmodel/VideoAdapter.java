@@ -41,6 +41,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         Uri videoUri = Uri.parse(video.getUrl());
 
         holder.videoView.setVideoURI(videoUri);
+        holder.videoView.start();
         holder.videoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

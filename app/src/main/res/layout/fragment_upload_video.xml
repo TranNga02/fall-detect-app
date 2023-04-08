@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Result"
+        android:text=""
         android:textStyle="bold"
         android:textSize="18sp"
         android:textColor="@color/red_700"

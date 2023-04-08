@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 public class NotificationFragment extends Fragment {
     private FragmentNotificationBinding binding;
-    DatabaseReference databaseReference;
     ArrayList<Video> videoArrayList;
     VideoAdapter videoAdapter;
 

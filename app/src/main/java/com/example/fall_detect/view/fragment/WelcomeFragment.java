@@ -34,16 +34,18 @@ public class WelcomeFragment extends Fragment {
     }
 
     private void nextFragment() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(user == null){
-            NavController navController = Navigation.findNavController(getActivity(),R.id.nav_host_sign_in);
-            navController.navigate(R.id.signInFragment);
-        }
-        else{
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
-        }
+        NavController navController = Navigation.findNavController(getActivity(),R.id.nav_host_sign_in);
+        navController.navigate(R.id.signInFragment);
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//
+//        if(user == null){
+//            NavController navController = Navigation.findNavController(getActivity(),R.id.nav_host_sign_in);
+//            navController.navigate(R.id.signInFragment);
+//        }
+//        else{
+//            Intent intent = new Intent(getActivity(), MainActivity.class);
+//            startActivity(intent);
+//        }
     }
 
     @Override

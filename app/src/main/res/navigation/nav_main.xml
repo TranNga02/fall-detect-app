@@ -15,9 +15,4 @@
         android:name="com.example.fall_detect.view.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/uploadVideoFragment"
-        android:name="com.example.fall_detect.view.fragment.UploadVideoFragment"
-        android:label="fragment_upload_video"
-        tools:layout="@layout/fragment_upload_video" />
 </navigation>

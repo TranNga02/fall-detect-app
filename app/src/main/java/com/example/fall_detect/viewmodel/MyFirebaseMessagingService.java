@@ -28,8 +28,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage message) {
         super.onMessageReceived(message);
 
-        System.out.println("--------------------------------------------------------");
-
         if(message.getNotification() != null) {
             showNotification(message.getNotification().getTitle(), message.getNotification().getBody());
         }
@@ -38,7 +36,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
-        System.out.println("-----------------------------"+token);
         String userId = FirebaseAuth.getInstance().getUid();
         // Write a message to the database
         FirebaseDatabase.getInstance().getReference("/users/" + userId + "/deviceTokens")
@@ -55,6 +52,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         String channelId = "fcm_default_channel";
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle()
+                .bigText(messageBody); // Set nội dung đầy đủ của thông báo
+
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.ic_notifications)
@@ -62,7 +62,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         .setContentText(messageBody)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
-                        .setContentIntent(pendingIntent);
+                        .setContentIntent(pendingIntent)
+                        .setStyle(bigTextStyle); // Áp dụng kiểu "big text" cho thông báo
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -76,5 +77,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+
     }
 }

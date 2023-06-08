@@ -7,6 +7,12 @@
         android:icon="@drawable/ic_notifications"
         />
 
+<!--    <item-->
+<!--        android:id="@+id/uploadVideoFragment"-->
+<!--        android:title=""-->
+<!--        android:icon="@drawable/ic_upload_video"-->
+<!--        />-->
+
     <item
         android:id="@+id/profileFragment"
         android:title=""

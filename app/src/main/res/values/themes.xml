@@ -22,4 +22,10 @@
     <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
+    <style name="Theme.FallDetect.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.FallDetect.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.FallDetect.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

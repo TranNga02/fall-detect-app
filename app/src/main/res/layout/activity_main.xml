@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.MainActivity">
-
-    <fragment
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/nav_bottom"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_main"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_bottom"
+    tools:context=".view.activity.MainActivity"
+    android:orientation="vertical">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_bottom_nav"
-        app:labelVisibilityMode="unlabeled"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@color/blue_700">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="History"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            />
+        <ImageView
+            android:id="@+id/btn_more"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_more"
+            />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
-</RelativeLayout>
+</LinearLayout>

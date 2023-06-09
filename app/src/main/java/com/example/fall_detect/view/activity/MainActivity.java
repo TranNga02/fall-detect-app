@@ -41,8 +41,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.rvVideo.setVisibility(View.GONE);
+        binding.loadingLayout.setVisibility(View.VISIBLE);
+
         getFcmToken();
 
+        // get list video from firebase
         String userId = FirebaseAuth.getInstance().getUid();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
@@ -58,22 +62,30 @@ public class MainActivity extends AppCompatActivity {
                     videoArrayList.add(0,video);
                 }
                 videoAdapter.notifyDataSetChanged();
+
+                binding.rvVideo.setVisibility(View.VISIBLE);
+                binding.loadingLayout.setVisibility(View.GONE);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println(databaseError.toException());
+                binding.rvVideo.setVisibility(View.VISIBLE);
+                binding.loadingLayout.setVisibility(View.GONE);
             }
         };
 
         subCollectionRef.addValueEventListener(subCollectionListener);
 
+
+        // set up recycler view
         binding.rvVideo.setLayoutManager(new LinearLayoutManager(this));
 
         videoArrayList = new ArrayList<>();
         videoAdapter = new VideoThumbnailAdapter(this,videoArrayList);
         binding.rvVideo.setAdapter(videoAdapter);
 
+        // sign-out
         binding.btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
